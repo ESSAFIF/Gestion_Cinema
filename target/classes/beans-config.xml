@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+		
+		<bean id="CinemaDAO" class="com.cinema.mvc.dao.CinemaDAOImpl" />
+		<bean id="CinemaService" class="com.cinema.mvc.service.CinemaServiceImpl">
+			<property name="dao" ref="CinemaDAO"></property>
+		</bean>
+	
+		<bean id="FilmDAO" class="com.cinema.mvc.dao.FilmDAOImpl" />
+		<bean id="FilmService" class="com.cinema.mvc.service.FilmServiceImpl">
+			<property name="dao" ref="FilmDAO"></property>
+		</bean>
+		
+		<bean id="IndividualDAO" class="com.cinema.mvc.dao.IndividualDAOImpl" />
+		<bean id="IndividualService" class="com.cinema.mvc.service.IndividualServiceImpl">
+			<property name="dao" ref="IndividualDAO"></property>
+		</bean>
+		
+		
+		<bean id="PlayDAO" class="com.cinema.mvc.dao.PlayDAOImpl" />
+		<bean id="PlayService" class="com.cinema.mvc.service.PlayServiceImpl">
+			<property name="dao" ref="PlayDAO"></property>
+		</bean>
+		
+		
+		<bean id="ProjectionDAO" class="com.cinema.mvc.dao.ProjectionDAOImpl" />
+		<bean id="ProjectionService" class="com.cinema.mvc.service.ProjectionServiceImpl">
+			<property name="dao" ref="ProjectionDAO"></property>
+		</bean>
+		
+		<bean id="UserDAO" class="com.cinema.mvc.dao.UserDAOImpl" />
+		<bean id="UserService" class="com.cinema.mvc.service.UserServiceImpl">
+			<property name="dao" ref="UserDAO"></property>
+		</bean>
+		
+		<bean id="RoleDAO" class="com.cinema.mvc.dao.RoleDAOImpl" />
+		<bean id="RoleService" class="com.cinema.mvc.service.RoleServiceImpl">
+			<property name="dao" ref="RoleDAO"></property>
+		</bean>
+		
+		<bean id="DashboardDao" class="com.cinema.mvc.dao.DashboardDaoImpl" />
+		<bean id="DashboardService" class="com.cinema.mvc.service.DashboardServiceImpl">
+			<property name="dao" ref="DashboardDao"></property>
+		</bean>
+		
+
+		<bean id="FlickrDAO" class="com.cinema.mvc.dao.AmazonDAOImpl" />
+		<bean id="FlickrService" class="com.cinema.mvc.service.AmazonServiceImpl">
+			<property name="dao" ref="FlickrDAO"></property>
+		</bean>
+		
+		<bean id="projectionValidator" class="com.cinema.mvc.controllers.DateProjValidator" />
+		<bean id="filmValidator" class="com.cinema.mvc.controllers.DateFilmValidator" />
+		
+		
+</beans>
