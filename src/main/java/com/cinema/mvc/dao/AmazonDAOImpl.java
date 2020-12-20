@@ -20,12 +20,12 @@ import org.springframework.web.multipart.MultipartFile;
 public class AmazonDAOImpl implements  AmazonDAO{
 
 
-    private String accessKey = "7c3HDM7Rkvcp57FDAzwTx8jl/tUtWHOw2TEZIbi6";
+    private String accessKey = "tK8Z9ZCelbUI2YiCnn7We6ZUusTB/rjyHZvRTf3P";
 
-    private String awsKeyId = "AKIAJMNTE2JK2DDQMM7Q";
+    private String awsKeyId = "AKIAXIVLTVYM2ZU3B5GP";
     private String region="eu-west-3";
     private String  bucketName="photocine";
-    private String contentType="image/jpeg";
+    private String contentType="text/html";
 
 	@Override
 	public URL  savePhoto(InputStream photo, String title) throws Exception  {
@@ -34,16 +34,19 @@ public class AmazonDAOImpl implements  AmazonDAO{
   	  AmazonS3 amazonS3Client= AmazonS3ClientBuilder.standard().withRegion(Regions.fromName(region))
               .withCredentials(new AWSStaticCredentialsProvider(awsCreds)).build();
 
-    	
+  	     String file_name = "img_SOME_LOGIC.jpg";
         ObjectMetadata objectMetadata = new ObjectMetadata();
-        objectMetadata.setContentType(contentType);
-    
+        objectMetadata.setContentType("image/jpeg" );
+        objectMetadata.setContentEncoding("UTF-8");
+        long size = photo.available();
+        objectMetadata.setContentLength(size);
         
+      
         //TODO add cache control
         try {
-            amazonS3Client.putObject(bucketName, title,photo, objectMetadata);
+            amazonS3Client.putObject(bucketName, file_name,photo, objectMetadata);
           
-            
+           
         } catch (AmazonClientException e) {
             e.printStackTrace();
         }
